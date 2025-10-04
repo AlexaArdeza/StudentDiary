@@ -1,26 +1,26 @@
-using Microsoft.EntityFrameworkCore;
-using StudentDiary.Infrastructure.Models;
-
-namespace StudentDiary.Infrastructure.Data
-{
-    public class StudentDiaryContext : DbContext
-    {
-        public StudentDiaryContext(DbContextOptions<StudentDiaryContext> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<User> Users { get; set; }
-        public DbSet<DiaryEntry> DiaryEntries { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Relationship: User has many DiaryEntries
-            modelBuilder.Entity<DiaryEntry>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-        }
-    }
-}
+﻿StudentDiary_Exercise
+│
+├── StudentDiary.Domain
+│   └── Entities
+│       └── Student.cs
+│
+├── StudentDiary.Infrastructure
+│   └── Data
+│       └── ApplicationDbContext.cs   ✅ (DbContext here)
+│
+├── StudentDiary.Services
+│   ├── Interfaces
+│   │   └── IStudentService.cs
+│   └── Implementations
+│       └── StudentService.cs
+│
+└── StudentDiary.Presentation (your ASP.NET Core MVC project)
+    ├── Controllers
+    │   └── StudentsController.cs
+    ├── Views
+    │   └── Students
+    │       ├── Index.cshtml
+    │       ├── Create.cshtml
+    │       ├── Edit.cshtml
+    │       └── Delete.cshtml
+    └── Program.cs

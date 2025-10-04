@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using StudentDiary.Domain.Entities;
-using StudentDiary.Infrastructure.Data; // DbContext
+using StudentDiary.Infrastructure.Data;  // make sure reference added
 using StudentDiary.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
