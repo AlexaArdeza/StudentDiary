@@ -1,0 +1,25 @@
+﻿@model IEnumerable<StudentDiary.Infrastructure.Models.User>
+@{
+    ViewData["Title"] = "Students";
+}
+<h1>Students</h1>
+<p><a asp-action="Create" class="btn btn-primary">Create New</a></p>
+<table class="table">
+    <thead>
+        <tr><th>Id</th><th>Username</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Username</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@s.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@s.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@s.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
