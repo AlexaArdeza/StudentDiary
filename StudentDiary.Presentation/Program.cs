@@ -3,6 +3,17 @@ using StudentDiary.Infrastructure.Data;
 using StudentDiary.Services.Interfaces;
 using StudentDiary.Services.Implementations;
 
+using StudentDiary.Infrastructure.Data;
+using StudentDiary.Services.Implementations;
+using StudentDiary.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+builder.Services.AddDbContext<StudentDiaryContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add DbContext
